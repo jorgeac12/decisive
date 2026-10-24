@@ -1,0 +1,175 @@
+<section class="cover">
+  <div class="bars"><i></i><i></i></div>
+  <p class="eyebrow">Decision Deck · Component gallery</p>
+  <h1>Every slide ends in a decision, and every number has a source</h1>
+  <p class="muted" style="font-size:32px;max-width:1300px">All components and charts available to the skill, rendered from fictional data.</p>
+  <p style="color:var(--faint)">Example · Fictional company Northwind Logistics</p>
+</section>
+
+<section>
+  <p class="eyebrow">Executive summary</p>
+  <h2>Consolidating three warehouses cuts delivery cost only if two owner decisions come first</h2>
+  <div class="row">
+    <p class="row-label">The problem</p>
+    <div class="card"><p class="num">1</p><h3>Duplicate stock</h3><p class="muted">The same items are held in three sites, tying up working capital.</p></div>
+    <div class="card"><p class="num">2</p><h3>Slow routing</h3><p class="muted">Orders are routed by hand, adding a day to most deliveries.</p></div>
+    <div class="card"><p class="num">3</p><h3>No single owner</h3><p class="muted">Each site reports its own numbers with its own definitions.</p></div>
+  </div>
+  <div class="row">
+    <p class="row-label accent">The way out</p>
+    <div class="card accent-solid"><p class="num">4</p><h3>One hub, one owner</h3><p>A single regional hub with a named operations owner.</p></div>
+    <div class="card accent-soft"><p class="num">5</p><h3>Automated routing</h3><p class="muted">Rules decide the route; people handle exceptions.</p></div>
+    <div class="card accent-soft"><p class="num">6</p><h3>One metric book</h3><p class="muted">Cost per delivery defined once, reported weekly.</p></div>
+  </div>
+  <p class="banner">Two decisions are requested at the end. The most urgent: name the hub owner.</p>
+  <aside>SCQA: situation, complication, question, answer. The answer is up front.</aside>
+</section>
+
+<section class="section-break">
+  <p class="big">01</p>
+  <h2>What the numbers say</h2>
+  <p class="muted" style="font-size:30px">Trend, target, bridge, ranking and mix</p>
+</section>
+
+<section>
+  <p class="eyebrow">Trend</p>
+  <h2>Cost per delivery fell 22% in six months and is close to target</h2>
+  <p class="chart-caption">Cost per delivery, USD</p>
+  <div class="chart" data-type="line"><script type="application/json">{"prefix":"$","decimals":2,"labels":["Jan","Feb","Mar","Apr","May","Jun"],"series":[{"name":"Actual","values":[9.10,8.80,8.20,7.60,7.30,7.10],"highlight":true,"color":"good"},{"name":"Plan","values":[9.0,8.8,8.6,8.4,8.2,8.0]}],"target":{"value":7.0,"label":"Target"},"annotations":[{"index":2,"text":"routing rules go live","position":"below"}]}</script></div>
+  <p class="source">Source: fictional data for this example · cut-off Jun 30</p>
+  <aside>Observation: cost fell 22%. Implication: the target is now reachable this year. Recommendation: keep the routing rules and fund the hub.</aside>
+</section>
+
+<section>
+  <p class="eyebrow">Targets</p>
+  <h2>Two of three service targets were met this quarter</h2>
+  <div class="chart" data-type="bullet"><script type="application/json">{"items":[{"label":"On-time delivery (%)","actual":94,"target":95,"unit":"%"},{"label":"Orders per hour","actual":182,"target":160},{"label":"Damage rate (%)","actual":0.6,"target":0.8,"higher_is_better":false}]}</script></div>
+  <div class="callout"><p>On-time delivery missed by one point; the gap sits in the north site, which joins the hub last.</p></div>
+  <aside>Bullet graphs replace gauges: actual bar, target tick, qualitative ranges in one compact row.</aside>
+</section>
+
+<section>
+  <p class="eyebrow">Bridge</p>
+  <h2>Routing and stock savings more than offset the new fleet lease</h2>
+  <p class="chart-caption">Monthly operating cost, USD thousand</p>
+  <div class="chart" data-type="waterfall"><script type="application/json">{"unit":"k","positive_is_good":false,"items":[{"label":"January","value":420,"type":"total"},{"label":"Routing","value":-48},{"label":"Stock","value":-31},{"label":"Fleet lease","value":22},{"label":"June","value":363,"type":"total","highlight":true}]}</script></div>
+  <p class="source">Source: fictional data for this example</p>
+  <aside>Check that the final total equals the first total plus the steps: 420 - 48 - 31 + 22 = 363.</aside>
+</section>
+
+<section>
+  <p class="eyebrow">Ranking and mix</p>
+  <h2>The south site carries almost half of the volume</h2>
+  <div class="chart" data-type="bar"><script type="application/json">{"unit":"%","highlight":["South"],"items":[{"label":"South","value":46},{"label":"Center","value":31},{"label":"North","value":23}]}</script></div>
+  <div class="chart" data-type="stack"><script type="application/json">{"highlight":["Same day"],"items":[{"label":"Same day","value":38},{"label":"Next day","value":44},{"label":"Two days or more","value":18}]}</script></div>
+  <aside>Gray everything, color one thing: the highlighted bar is the message.</aside>
+</section>
+
+<section>
+  <p class="eyebrow">Indicators</p>
+  <h2>Quarterly indicators: cost and speed improved, damage held</h2>
+  <div class="kpis">
+    <div class="kpi main"><p class="label">Cost per delivery</p><p class="value">$7.10</p><p class="delta good">▼ 22% vs January</p></div>
+    <div class="kpi"><p class="label">Orders per hour</p><p class="value">182</p><p class="delta good">▲ 14% vs target</p></div>
+    <div class="kpi"><p class="label">Damage rate</p><p class="value">0.6%</p><p class="delta neutral">= flat vs last quarter</p></div>
+  </div>
+  <div class="chart" data-type="column" style="margin-top:20px"><script type="application/json">{"unit":"k","highlight":[3],"height":280,"items":[{"label":"Q3 25","value":118},{"label":"Q4 25","value":124},{"label":"Q1 26","value":131},{"label":"Q2 26","value":142}]}</script></div>
+  <p class="source">Orders per quarter, thousand · fictional data</p>
+  <aside>Every delta says against what.</aside>
+</section>
+
+<section class="section-break">
+  <p class="big">02</p>
+  <h2>The project</h2>
+  <p class="muted" style="font-size:30px">Brief, schedule and roadmap</p>
+</section>
+
+<section>
+  <p class="eyebrow">Project brief</p>
+  <h2>One hub in nine months, with success measured on cost and speed</h2>
+  <div class="brief">
+    <div class="field"><p class="label">Objective</p><p>Serve the region from one hub at lower cost per delivery</p></div>
+    <div class="field"><p class="label">Owner</p><p>[name]</p><span class="pill yellow">At risk</span></div>
+    <div class="field"><p class="label">Deadline</p><p>March 2027</p></div>
+    <div class="field wide"><p class="label">Scope</p><p>Hub fit-out, routing rules, stock transfer, one metric book</p></div>
+    <div class="field out"><p class="label">Out of scope</p><p>New customers, pricing changes</p></div>
+    <div class="field full success"><p class="label">Success if</p><p>Cost per delivery at or below $7.00, on-time at or above 95%, zero stock write-offs from the move</p></div>
+  </div>
+  <aside>The owner field is a placeholder on purpose: naming it is the first decision.</aside>
+</section>
+
+<section>
+  <p class="eyebrow">Schedule</p>
+  <h2>Nine months, one critical milestone in January</h2>
+  <div class="chart" data-type="gantt"><script type="application/json">{"start":"2026-07","end":"2027-03","today":"2026-10-21","bars":[{"label":"Design","start":"2026-07","end":"2026-08","status":"done"},{"label":"Hub fit-out","start":"2026-09","end":"2026-12","status":"active"},{"label":"Routing rules","start":"2026-10-15","end":"2027-01","status":"planned"},{"label":"Stock transfer","start":"2027-01","end":"2027-02","status":"risk"},{"label":"Go-live","start":"2027-03","end":"2027-03","status":"planned"}],"milestones":[{"date":"2026-12-10","label":"Hub ready"},{"date":"2027-01-20","label":"Lease ends","critical":true}]}</script></div>
+  <aside>Only dates that are in the source documents go here. Without firm dates, use the roadmap.</aside>
+</section>
+
+<section>
+  <p class="eyebrow">Roadmap</p>
+  <h2>Only the hub is a commitment; the rest depends on its results</h2>
+  <div class="roadmap">
+    <div class="now"><h3>Now<small>committed</small></h3>
+      <div class="item"><b>Regional hub</b><span>Outcome: lower cost per delivery</span></div>
+      <div class="item deadline"><b>Exit old lease</b><span>External deadline: Jan 20</span></div></div>
+    <div class="next"><h3>Next<small>likely</small></h3>
+      <div class="item"><b>Customer delivery windows</b><span>Outcome: fewer failed deliveries</span></div></div>
+    <div class="later"><h3>Later<small>open</small></h3>
+      <div class="item"><b>Second region</b><span>Enters if the hub hits target for two quarters</span></div></div>
+  </div>
+  <aside>Now, Next, Later: certainty spread across time, no invented dates.</aside>
+</section>
+
+<section class="section-break">
+  <p class="big">03</p>
+  <h2>Risks and decisions</h2>
+  <p class="muted" style="font-size:30px">What is decided, what is open, what nobody addressed</p>
+</section>
+
+<section>
+  <p class="eyebrow">Decision status</p>
+  <h2>Five things are decided, two are open and three were never addressed</h2>
+  <div class="row">
+    <div class="card good-soft top-good"><h3 style="color:var(--good-text)">Decided</h3><p>One hub, south region</p><p>Rule-based routing</p><p>One metric book</p><p>Fleet lease signed</p><p>Go-live in March</p></div>
+    <div class="card top-neutral"><h3 style="color:var(--muted)">Open (stated)</h3><p>Hub owner</p><p>Staff transfer terms</p></div>
+    <div class="card accent-soft top-accent"><h3 style="color:var(--accent-text)">Not addressed</h3><p>Fallback if the transfer slips past Jan 20</p><p>Cost of running two sites in parallel</p><p>Exit criteria for the pilot month</p></div>
+  </div>
+  <aside>The third column is the analyst's contribution: none of it is in the source documents.</aside>
+</section>
+
+<section>
+  <p class="eyebrow">Risks</p>
+  <h2>The highest risks are decisions, not engineering</h2>
+  <table>
+    <tr><th style="width:28%">Risk</th><th style="width:30%">Business impact</th><th style="width:12%">Level</th><th style="width:30%">My reading</th></tr>
+    <tr class="risk"><td>Transfer slips past lease end</td><td>Two sites paid in parallel</td><td class="lvl-high">High</td><td class="hl">Agree a fallback week now</td></tr>
+    <tr class="risk"><td>No named hub owner</td><td>Nobody answers for go-live</td><td class="lvl-high">High</td><td class="hl">Name one owner this month</td></tr>
+    <tr><td>Routing rules miss edge cases</td><td>Manual work returns</td><td class="lvl-med">Medium</td><td class="hl">Exception queue with a daily review</td></tr>
+    <tr><td>Damage during the move</td><td>Stock write-offs</td><td class="lvl-ok">Low</td><td class="hl">Insurance already covers it</td></tr>
+  </table>
+  <div class="callout bad"><p>Both high risks are solved with an owner and a written rule, not with more budget.</p></div>
+  <aside>Color never speaks alone: the level is written in every row.</aside>
+</section>
+
+<section>
+  <p class="eyebrow">Inconsistencies</p>
+  <h2>The plan and the budget disagree in two places</h2>
+  <div class="grid-2">
+    <div class="card accent-soft"><p class="num">1</p><h3>Go-live date</h3><p class="muted">The plan says March. The budget funds the old site only until January. Decide which one moves.</p></div>
+    <div class="card"><p class="num">2</p><h3>Headcount</h3><p class="muted">The plan assumes 40 people at the hub; the budget has 34. Decide the number before hiring starts.</p></div>
+  </div>
+  <div class="row" style="align-items:center">
+    <div class="card good-soft"><p class="lvl-ok">✓ Allowed</p><p class="muted">Routing exceptions handled by the hub team</p></div>
+    <div class="arrow"></div>
+    <div class="card bad-soft"><p class="lvl-high">✕ Not allowed</p><p class="muted">Sites routing their own orders after go-live</p></div>
+  </div>
+  <aside>Grid for inconsistencies, compare for allowed vs not allowed.</aside>
+</section>
+
+<section class="ask">
+  <p class="eyebrow">What I need from you</p>
+  <h2>Two decisions to start the hub safely</h2>
+  <div class="ask-item"><p class="n">1</p><p>Name the hub owner this month</p></div>
+  <div class="ask-item final"><p class="n">2</p><p>Approve the fallback week if the transfer slips past January 20</p></div>
+  <aside>End with action, never with "thank you" or "questions?".</aside>
+</section>

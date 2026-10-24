@@ -1,0 +1,337 @@
+<!doctype html>
+<html lang="pt-BR" data-theme="navy">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-y+1y4XRcjUE1SLM5d+mkInSbVbtREUOQkV8Q+iM32nA='; style-src 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'none'; form-action 'none'; base-uri 'none'; object-src 'none'; frame-src 'none'">
+<title>Central de Atendimento Unificada</title>
+<!-- Built with Decision Deck, part of Decisive by Jorge Oliveira (Apache-2.0): https://github.com/jorgeac12/decisive -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400..800&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* ===== THEMES: pick one with <html data-theme="navy|light|graphite">. Custom theme: copy a block and change only the values. ===== */
+:root,[data-theme="navy"]{
+  --page:#05090F; --bg:#0E1A2E; --bg-deep:#0A1322;
+  --text:#E6EAF0; --text-strong:#F5F7FA; --muted:#AEB8C7; --faint:#7D8A9E;
+  --surface:rgba(174,184,199,.07); --zebra-a:rgba(174,184,199,.10); --zebra-b:rgba(174,184,199,.03); --item:rgba(14,26,46,.55);
+  --border:#2B3A55; --border-strong:#4A5B78; --mark:#56657E;
+  --header-bg:#AEB8C7; --header-text:#0E1A2E;
+  --accent:#F2C230; --accent-text:#F7D96B; --accent-soft:rgba(242,194,48,.15); --on-accent:#0E1A2E;
+  --good:#3DBA8C; --good-text:#8FD9BC; --good-soft:rgba(61,186,140,.12);
+  --bad:#EC7A5C; --bad-text:#F3A48F; --bad-soft:rgba(236,122,92,.10);
+  --stack-1:#56657E; --stack-2:#6E7D96; --stack-3:#8794AA; --stack-4:#3F4D66; --stack-5:#9AA6BA;
+}
+[data-theme="light"]{
+  --page:#DDE2EA; --bg:#F7F8FA; --bg-deep:#EDF0F4;
+  --text:#2A3445; --text-strong:#0E1A2E; --muted:#5B6779; --faint:#7A8597;
+  --surface:rgba(14,26,46,.04); --zebra-a:rgba(14,26,46,.06); --zebra-b:rgba(14,26,46,.02); --item:#FFFFFF;
+  --border:#D3D9E2; --border-strong:#A4AEBD; --mark:#B4BDCB;
+  --header-bg:#0E1A2E; --header-text:#F5F7FA;
+  --accent:#F2C230; --accent-text:#8A5F00; --accent-soft:rgba(242,194,48,.22); --on-accent:#0E1A2E;
+  --good:#2E9E74; --good-text:#1D7553; --good-soft:rgba(46,158,116,.12);
+  --bad:#E0603F; --bad-text:#B03F22; --bad-soft:rgba(224,96,63,.10);
+  --stack-1:#B4BDCB; --stack-2:#9AA5B6; --stack-3:#CDD3DD; --stack-4:#808CA0; --stack-5:#E1E5EB;
+}
+[data-theme="graphite"]{
+  --page:#0B0C0E; --bg:#1B1D21; --bg-deep:#131417;
+  --text:#E4E6EA; --text-strong:#F7F8FA; --muted:#A3A8B1; --faint:#7A7F88;
+  --surface:rgba(163,168,177,.07); --zebra-a:rgba(163,168,177,.10); --zebra-b:rgba(163,168,177,.03); --item:rgba(11,12,14,.55);
+  --border:#33363C; --border-strong:#50545C; --mark:#5D626B;
+  --header-bg:#A3A8B1; --header-text:#1B1D21;
+  --accent:#F5A83D; --accent-text:#F8C47A; --accent-soft:rgba(245,168,61,.15); --on-accent:#1B1D21;
+  --good:#4CB8A4; --good-text:#93D9CC; --good-soft:rgba(76,184,164,.12);
+  --bad:#E8706A; --bad-text:#F2A39F; --bad-soft:rgba(232,112,106,.10);
+  --stack-1:#5D626B; --stack-2:#757A84; --stack-3:#8E939C; --stack-4:#464A51; --stack-5:#A7ACB4;
+}
+/* ===== LAYOUT (do not edit) ===== */
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:var(--page);height:100%;overflow:hidden;font-family:'Inter',Arial,sans-serif}
+#stage{position:absolute;left:50%;top:50%;width:1920px;height:1080px;transform-origin:center}
+section{position:absolute;inset:0;display:none;flex-direction:column;gap:28px;padding:128px 128px 160px;background:var(--bg);color:var(--text);overflow:hidden}
+section.active{display:flex}
+.eyebrow{font-size:24px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--accent-text)}
+h1{font-size:88px;font-weight:800;line-height:1.08;color:var(--text-strong)}
+h2{font-size:56px;font-weight:800;line-height:1.1;color:var(--text-strong)}
+h3{font-size:30px;font-weight:700;line-height:1.25;color:var(--text-strong)}
+p,td,th,li{font-size:24px;line-height:1.4}
+.muted{color:var(--muted)}
+.mono{font-family:'JetBrains Mono','Courier New',monospace}
+.num{font-size:24px;font-weight:800;color:var(--accent-text)}
+.row{display:flex;gap:24px;align-items:stretch}
+.col{display:flex;flex-direction:column;gap:16px}
+.row-label{width:190px;flex:none;font-size:24px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted)}
+.row-label.accent{color:var(--accent-text)}
+.card{flex:1;display:flex;flex-direction:column;gap:10px;background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:24px 28px}
+.accent-soft{background:var(--accent-soft);border:1px solid var(--accent)}
+.accent-solid{background:var(--accent);border:none}
+.accent-solid h3,.accent-solid p,.accent-solid .num,.accent-solid .muted{color:var(--on-accent)}
+.good-soft{background:var(--good-soft);border:1px solid var(--good)}
+.bad-soft{background:var(--bad-soft);border:1px solid var(--bad)}
+.top-accent{border-top:5px solid var(--accent)} .top-good{border-top:5px solid var(--good)} .top-neutral{border-top:5px solid var(--muted)}
+.arrow{flex:none;align-self:center;width:0;height:0;border-top:14px solid transparent;border-bottom:14px solid transparent;border-left:22px solid var(--border-strong)}
+.arrow-down{flex:none;align-self:center;width:0;height:0;border-left:12px solid transparent;border-right:12px solid transparent;border-top:16px solid var(--border-strong)}
+.callout{border-left:4px solid var(--accent);background:var(--accent-soft);padding:18px 26px}
+.callout p{font-size:26px;color:var(--text)}
+.callout.good{border-color:var(--good);background:var(--good-soft)}
+.callout.bad{border-color:var(--bad);background:var(--bad-soft)}
+.highlight-box{display:flex;flex-direction:column;gap:14px;background:var(--accent-soft);border:1px solid var(--accent);border-radius:12px;padding:26px 32px}
+.highlight-box h3{color:var(--accent-text)}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:12px 40px}
+.banner{background:var(--accent);color:var(--on-accent);font-size:26px;font-weight:700;border-radius:10px;padding:18px 28px}
+.big-numbers{display:flex;gap:24px}
+.big-numbers>div{flex:1;display:flex;flex-direction:column;gap:6px;border-top:5px solid var(--muted);padding-top:18px}
+.big-numbers .value{font-size:72px;font-weight:800;line-height:1;color:var(--text-strong)}
+.big-numbers .main{border-top-color:var(--accent)} .big-numbers .main .value{color:var(--accent-text)}
+table{width:100%;border-collapse:separate;border-spacing:0;border-radius:12px;overflow:hidden}
+th{background:var(--header-bg);color:var(--header-text);text-align:left;font-weight:700;padding:12px 20px}
+td{padding:12px 20px;vertical-align:top}
+tr:nth-child(even) td{background:var(--zebra-a)} tr:nth-child(odd) td{background:var(--zebra-b)}
+td.hl{color:var(--accent-text)} tr.hl td{background:var(--accent-soft)} tr.risk td{background:var(--bad-soft)}
+.lvl-high{color:var(--bad-text);font-weight:700} .lvl-med{color:var(--accent-text);font-weight:700} .lvl-ok{color:var(--good-text);font-weight:700}
+.timeline{display:flex} .timeline>div{flex:1;display:flex;flex-direction:column;gap:10px;padding:20px 24px 0 0}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.section-break{background:var(--bg-deep);justify-content:center;padding:128px}
+.section-break .big{font-size:200px;font-weight:800;line-height:1;color:var(--accent)}
+.section-break h2{font-size:80px}
+.cover{justify-content:center;gap:40px;padding:128px;background:linear-gradient(135deg,var(--bg),var(--bg-deep))}
+.cover .bars{display:flex;gap:16px} .cover .bars i{display:block;height:8px;width:160px;background:var(--accent)} .cover .bars i+i{width:56px;background:var(--good)}
+.ask{background:var(--accent);color:var(--on-accent)} .ask h2{font-size:64px;color:var(--on-accent)} .ask .eyebrow{color:var(--on-accent);opacity:.8}
+.ask-item{display:flex;align-items:center;gap:28px;background:rgba(0,0,0,.08);border-radius:12px;padding:18px 28px}
+.ask-item .n{width:64px;flex:none;font-size:48px;font-weight:800}
+.ask-item p{font-size:30px;font-weight:600}
+.ask-item.final{background:var(--on-accent);color:var(--accent)} .ask-item.final p{color:#F5F7FA}
+.footer{position:absolute;left:128px;right:128px;bottom:64px;display:flex;justify-content:space-between;font-size:24px;color:var(--faint);opacity:.85}
+.ask .footer{color:var(--on-accent);opacity:.7}
+.kpis{display:flex;gap:24px}
+.kpi{flex:1;display:flex;flex-direction:column;gap:8px;background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:24px 28px}
+.kpi .label{font-size:24px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--muted)}
+.kpi .value{font-size:64px;font-weight:800;line-height:1;color:var(--text-strong)}
+.kpi .delta{font-size:24px;font-weight:700}
+.kpi .delta.good{color:var(--good-text)} .kpi .delta.bad{color:var(--bad-text)} .kpi .delta.neutral{color:var(--muted)}
+.kpi.main{border:2px solid var(--accent);background:var(--accent-soft)} .kpi.main .value{color:var(--accent-text)}
+.chart{width:100%}
+.chart svg{display:block;overflow:visible}
+.chart-caption{font-size:24px;color:var(--muted)}
+.source{font-size:24px;color:var(--faint)}
+.roadmap{display:flex;gap:24px;align-items:stretch}
+.roadmap>div{flex:1;display:flex;flex-direction:column;gap:14px;border-radius:12px;padding:24px 26px;background:var(--surface)}
+.roadmap .now{border-top:6px solid var(--good);background:var(--good-soft)}
+.roadmap .next{border-top:6px solid var(--accent)}
+.roadmap .later{border-top:6px solid var(--muted)}
+.roadmap h3 small{display:block;font-size:24px;font-weight:400;color:var(--muted)}
+.item{display:flex;flex-direction:column;gap:4px;background:var(--item);border:1px solid var(--border);border-radius:10px;padding:14px 18px}
+.item b{font-size:24px;color:var(--text-strong)} .item span{font-size:24px;color:var(--muted)}
+.item.deadline{border-color:var(--bad)} .item.deadline span{color:var(--bad-text)}
+.brief{display:grid;grid-template-columns:1.1fr 1fr 1fr;gap:20px}
+.field{display:flex;flex-direction:column;gap:8px;background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:20px 24px}
+.field .label{font-size:24px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--accent-text)}
+.field.wide{grid-column:span 2} .field.full{grid-column:span 3}
+.field.out .label{color:var(--bad-text)} .field.success .label{color:var(--good-text)}
+.pill{display:inline-block;align-self:start;font-size:24px;font-weight:800;border-radius:999px;padding:6px 18px;color:#0E1A2E}
+.pill.green{background:var(--good)} .pill.yellow{background:var(--accent)} .pill.red{background:var(--bad)} .pill.gray{background:var(--muted)}
+aside{display:none}
+#notes{position:fixed;left:0;right:0;bottom:0;max-height:30vh;overflow:auto;background:#111c2f;color:#E6EAF0;font:16px/1.5 Inter,Arial,sans-serif;padding:14px 20px;border-top:2px solid var(--accent);display:none;white-space:pre-wrap}
+@media print{html,body{overflow:visible;background:none}#stage{position:static;transform:none!important}section{position:relative;display:flex!important;page-break-after:always;width:1920px;height:1080px}#notes{display:none!important}@page{size:1920px 1080px;margin:0}}
+</style>
+</head>
+<body data-footer="Ipê Amarelo Alimentos (fictícia) · Uso interno">
+<div id="stage">
+
+<section class="cover">
+  <div class="bars"><i></i><i></i></div>
+  <p class="eyebrow">Operações · Outubro 2026</p>
+  <h1>Central de Atendimento Unificada: o que decidir antes de começar</h1>
+  <p class="muted" style="font-size:32px;max-width:1300px">Leitura da proposta e do orçamento 2027, com riscos, inconsistências e quatro decisões para a diretoria.</p>
+  <p style="color:var(--faint)">Para a diretoria executiva · Exemplo com empresa fictícia (Ipê Amarelo Alimentos)</p>
+</section>
+
+<section>
+  <p class="eyebrow">Resumo executivo</p>
+  <h2>Unificar o atendimento resolve a piora do serviço, se quatro decisões vierem antes</h2>
+  <div class="row">
+    <p class="row-label">O problema</p>
+    <div class="card"><p class="num">1</p><h3>Três filas separadas</h3><p class="muted">Equipe, ferramenta e indicadores diferentes em cada canal.</p></div>
+    <div class="card"><p class="num">2</p><h3>Cliente atendido duas vezes</h3><p class="muted">Quem fala por dois canais recomeça do zero.</p></div>
+    <div class="card"><p class="num">3</p><h3>Serviço piorando</h3><p class="muted">Resposta 32% mais lenta e satisfação de 8,1 para 7,2.</p></div>
+  </div>
+  <div class="row">
+    <p class="row-label accent">A saída</p>
+    <div class="card accent-solid"><p class="num">4</p><h3>Uma central, um dono</h3><p>Uma fila, uma ferramenta e um responsável pela meta.</p></div>
+    <div class="card accent-soft"><p class="num">5</p><h3>Histórico compartilhado</h3><p class="muted">O cliente é reconhecido em qualquer canal.</p></div>
+    <div class="card accent-soft"><p class="num">6</p><h3>Plano e orçamento iguais</h3><p class="muted">Equipe e datas reconciliadas antes do início.</p></div>
+  </div>
+  <p class="banner">No fim, quatro decisões. A mais urgente: nomear um dono único da central.</p>
+  <aside>Situação: três canais separados. Complicação: o serviço piora mês a mês. Pergunta: como unificar sem piorar durante a migração? Resposta: unificar, com quatro decisões tomadas antes.</aside>
+</section>
+
+<section>
+  <p class="eyebrow">Tendência</p>
+  <h2>O tempo de resposta subiu 32% em sete meses e está longe da meta de 6 horas</h2>
+  <p class="chart-caption">Tempo médio de resposta, todas as filas, em horas</p>
+  <div class="chart" data-type="line"><script type="application/json">{"unit":" h","labels":["jan","fev","mar","abr","mai","jun","jul","ago"],"series":[{"name":"Realizado","values":[11,11.5,12,12.8,13,13.6,14,14.5],"highlight":true}],"target":{"value":6,"label":"Meta jun/27"},"annotations":[{"index":7,"text":"+32% desde janeiro","position":"above","align":"end"}]}</script></div>
+  <p class="source">Fonte: proposta de Operações, set/2026 · dados fictícios</p>
+  <aside>Observação: a curva sobe todo mês. Implicação: a meta exige inverter a tendência, não ajustá-la. Recomendação: tratar a migração como prioridade de serviço, não de ferramenta.</aside>
+</section>
+
+<section>
+  <p class="eyebrow">Volume e custo por canal</p>
+  <h2>O WhatsApp já é metade do volume e o canal mais barato por atendimento</h2>
+  <p class="chart-caption">Participação no volume mensal (50 mil atendimentos)</p>
+  <div class="chart" data-type="bar"><script type="application/json">{"unit":"%","highlight":["WhatsApp"],"items":[{"label":"WhatsApp","value":52},{"label":"Telefone","value":36},{"label":"E-mail","value":12}]}</script></div>
+  <div class="kpis" style="margin-top:16px">
+    <div class="kpi main"><p class="label">WhatsApp</p><p class="value">R$ 6,80</p><p class="delta good">▼ 52% vs telefone</p></div>
+    <div class="kpi"><p class="label">E-mail</p><p class="value">R$ 9,50</p><p class="delta neutral">resposta em 31 h</p></div>
+    <div class="kpi"><p class="label">Telefone</p><p class="value">R$ 14,20</p><p class="delta bad">▲ canal mais caro</p></div>
+  </div>
+  <p class="source">Custo por atendimento · fonte: proposta de Operações · dados fictícios</p>
+  <aside>Migrar o WhatsApp primeiro é coerente: maior volume, menor custo, menor risco.</aside>
+</section>
+
+<section>
+  <p class="eyebrow">A proposta</p>
+  <h2>A central troca três filas por uma, com histórico e roteamento automático</h2>
+  <div class="row" style="align-items:center">
+    <div class="card"><h3>Três canais</h3><p class="muted">Telefone, WhatsApp e e-mail entram por uma porta só</p></div>
+    <div class="arrow"></div>
+    <div class="card accent-soft"><h3>Roteamento por assunto</h3><p class="muted">Regra distribui; especialistas tratam as exceções</p></div>
+    <div class="arrow"></div>
+    <div class="card good-soft"><h3>Atendente com histórico</h3><p class="muted">O cliente não repete a história</p></div>
+    <div class="arrow"></div>
+    <div class="card"><h3>Painel único</h3><p class="muted">Tempo e satisfação definidos uma vez</p></div>
+  </div>
+  <div class="callout"><p>Minha leitura: o desenho é sólido. O risco não está na central, está na transição entre o modelo atual e ela.</p></div>
+  <aside>Os quatro componentes são decisões fechadas na proposta. A crítica vem nos próximos slides.</aside>
+</section>
+
+<section>
+  <p class="eyebrow">Custo</p>
+  <h2>O custo mensal cai de R$ 442 mil para R$ 400 mil, e quase toda a economia líquida vem da equipe menor</h2>
+  <p class="chart-caption">Custo mensal do atendimento, R$ mil</p>
+  <div class="chart" data-type="waterfall"><script type="application/json">{"unit":" mil","prefix":"R$ ","positive_is_good":false,"items":[{"label":"Hoje","value":442,"type":"total"},{"label":"Equipes","value":-40},{"label":"Ferramentas antigas","value":-62},{"label":"Nova ferramenta","value":48},{"label":"Treinamento","value":12},{"label":"2027","value":400,"type":"total","highlight":true}]}</script></div>
+  <p class="source">Fonte: orçamento 2027 do Financeiro · dados fictícios</p>
+  <aside>442 - 40 - 62 + 48 + 12 = 400. Ferramentas e treinamento somam -2 líquido; a equipe responde por 40 dos 42 mil. A redução de equipe assume 36 atendentes, número que a proposta não usa (ver inconsistências).</aside>
+</section>
+
+<section>
+  <p class="eyebrow">Cronograma</p>
+  <h2>A migração termina em março, colada no vencimento do contrato de telefonia</h2>
+  <div class="chart" data-type="gantt"><script type="application/json">{"start":"2026-10","end":"2027-06","today":"2026-10-21","bars":[{"label":"Ferramenta e filas","start":"2026-10","end":"2026-11","status":"active"},{"label":"WhatsApp e e-mail","start":"2026-12","end":"2027-02","status":"planned"},{"label":"Telefone","start":"2027-03","end":"2027-03","status":"risk"},{"label":"Meta de serviço","start":"2027-04","end":"2027-06","status":"planned"}],"milestones":[{"date":"2027-01-01","label":"Orçamento desliga"},{"date":"2027-03-15","label":"Contrato vence","critical":true}]}</script></div>
+  <div class="callout bad"><p>O orçamento desliga as ferramentas antigas em janeiro; o telefone só migra em março.</p></div>
+  <aside>Datas tiradas dos dois documentos. O marco de janeiro vem do orçamento; o de março, da proposta.</aside>
+</section>
+
+<section>
+  <p class="eyebrow">Estado das decisões</p>
+  <h2>Seis pontos decididos, dois em aberto e cinco que ninguém endereçou</h2>
+  <div class="row">
+    <div class="card good-soft top-good"><h3 style="color:var(--good-text)">Decidido</h3><p>Central única</p><p>Histórico compartilhado</p><p>Roteamento por assunto</p><p>Painel único</p><p>Meta de 6 h e satisfação 8,0</p><p>Ordem da migração</p></div>
+    <div class="card top-neutral"><h3 style="color:var(--muted)">Em aberto (declarado)</h3><p>Retenção das conversas</p><p>Treinamento do telefone</p></div>
+    <div class="card accent-soft top-accent"><h3 style="color:var(--accent-text)">Não endereçado</h3><p>Dono único da central</p><p>Operação em paralelo</p><p>Critério de saída por etapa</p><p>Capacidade com +10% de volume</p><p>Retenção como obrigação legal</p></div>
+  </div>
+  <aside>A terceira coluna é a contribuição desta leitura: nada ali aparece nos documentos.</aside>
+</section>
+
+<section>
+  <p class="eyebrow">Inconsistências</p>
+  <h2>A proposta e o orçamento discordam em três pontos, e uma promessa não se sustenta</h2>
+  <div class="grid-2">
+    <div class="card"><p class="num">1</p><h3>Tamanho da equipe</h3><p class="muted">A proposta diz 42 atendentes. O orçamento prevê 36. Decidir pela capacidade medida.</p></div>
+    <div class="card accent-soft"><p class="num">2</p><h3>Desligamento das ferramentas</h3><p class="muted">O orçamento desliga em janeiro. O telefone migra em março. Decidir qual data se move.</p></div>
+    <div class="card"><p class="num">3</p><h3>Operação em paralelo</h3><p class="muted">A migração exige dois a três meses com as duas ferramentas. Não há verba para isso.</p></div>
+    <div class="card bad-soft"><p class="num">4</p><h3>Promessa forte demais</h3><p class="muted">"Garante" que ninguém é atendido duas vezes. Depende de identificar o cliente entre canais.</p></div>
+  </div>
+  <aside>Nenhuma invalida a proposta. Todas precisam estar resolvidas antes de a migração começar em dezembro.</aside>
+</section>
+
+<section>
+  <p class="eyebrow">Riscos</p>
+  <h2>Os riscos altos são de decisão, não de tecnologia</h2>
+  <table>
+    <tr><th style="width:28%">Risco</th><th style="width:32%">Impacto no negócio</th><th style="width:10%">Nível</th><th style="width:30%">Minha leitura</th></tr>
+    <tr class="risk"><td>Sem verba para paralelo</td><td>Telefone sem ferramenta antes da migração</td><td class="lvl-high">Alta</td><td class="hl">Orçar três meses de paralelo</td></tr>
+    <tr class="risk"><td>Coordenação compartilhada</td><td>Ninguém responde pela meta</td><td class="lvl-high">Alta</td><td class="hl">Um dono, o outro contribui</td></tr>
+    <tr class="risk"><td>Equipe menor, volume maior</td><td>Tempo de resposta piora</td><td class="lvl-high">Alta</td><td class="hl">Decidir 36 ou 42 pela capacidade</td></tr>
+    <tr><td>Retenção indefinida</td><td>Exposição regulatória</td><td class="lvl-med">Média</td><td class="hl">Política antes da migração</td></tr>
+  </table>
+  <div class="callout"><p>Os três riscos altos se resolvem com um dono e uma regra escrita, não com mais tecnologia.</p></div>
+  <aside>Ordenados por nível. O texto do nível acompanha a cor em todas as linhas.</aside>
+</section>
+
+<section class="ask">
+  <p class="eyebrow">O que preciso de vocês</p>
+  <h2>Quatro decisões para começar a central com segurança</h2>
+  <div class="ask-item"><p class="n">1</p><p>Nomear um dono único da central (Operações ou Marketing)</p></div>
+  <div class="ask-item"><p class="n">2</p><p>Definir o tamanho da equipe, 36 ou 42, pela capacidade medida</p></div>
+  <div class="ask-item"><p class="n">3</p><p>Aprovar verba para até três meses de operação em paralelo</p></div>
+  <div class="ask-item final"><p class="n">4</p><p>Aprovar a política de retenção de conversas antes de dezembro</p></div>
+  <aside>Com essas quatro decisões a migração começa sem herdar os riscos altos.</aside>
+</section>
+
+</div>
+<div id="notes"></div>
+<script>
+/* Decision Deck runtime: charts, navigation, footer, notes. Do not edit: the CSP above pins this script by hash. */
+(function(){
+"use strict";
+const doc=document.documentElement,LANG=(doc.lang||'en').toLowerCase(),PT=LANG.startsWith('pt');
+const TXT=PT?{today:'hoje',of:'de',noNotes:'(sem notas)',target:'Meta',reached:'atingiu a meta de',below:'abaixo da meta de',done:'feito',active:'em andamento',planned:'planejado',risk:'em risco',badJson:'Erro no JSON do gráfico: ',badType:'Tipo de gráfico desconhecido: ',months:['jan','fev','mar','abr','mai','jun','jul','ago','set','out','nov','dez']}
+:{today:'today',of:'of',noNotes:'(no notes)',target:'Target',reached:'met target of',below:'below target of',done:'done',active:'in progress',planned:'planned',risk:'at risk',badJson:'Chart JSON error: ',badType:'Unknown chart type: ',months:['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']};
+const V=k=>getComputedStyle(doc).getPropertyValue(k).trim();
+const P={ac:V('--accent'),act:V('--accent-text'),gd:V('--good'),gdt:V('--good-text'),bd:V('--bad'),mu:V('--muted'),tx:V('--text'),ts:V('--text-strong'),fa:V('--faint'),bo:V('--border'),bs:V('--border-strong'),mk:V('--mark'),oa:V('--on-accent'),stack:[1,2,3,4,5].map(i=>V('--stack-'+i))};
+const N=(v,d)=>{v=Number(v);return Number.isFinite(v)?v:d;};
+const X=t=>String(t==null?'':t).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+const nf=(v,d)=>{v=N(v,0);d=d==null?(Number.isInteger(+v.toFixed(6))?0:1):Math.max(0,Math.min(4,N(d,0)));return v.toLocaleString(PT?'pt-BR':LANG,{minimumFractionDigits:d,maximumFractionDigits:d});};
+const F=(v,o)=>{v=N(v,0);return(v<0?'-':'')+(o.prefix||'')+nf(Math.abs(v),o.decimals)+(o.unit||'');};
+const ANCH={start:1,middle:1,end:1};
+const T=(x,y,t,o={})=>`<text x="${N(x,0)}" y="${N(y,0)}" font-size="${N(o.s,24)}" fill="${o.c||P.mu}" text-anchor="${ANCH[o.a]?o.a:'start'}" font-weight="${N(o.w,400)}" dominant-baseline="middle">${X(t)}</text>`;
+const S=(W,H,b)=>`<svg viewBox="0 0 ${N(W,1664)} ${N(H,400)}" width="100%" xmlns="http://www.w3.org/2000/svg" font-family="Inter,Arial,sans-serif" role="img">${b}</svg>`;
+const hl=(d,i,it)=>!!(it&&it.highlight)||(Array.isArray(d.highlight)?d.highlight:[]).some(x=>x===i||x===(it&&it.label));
+const R={};
+R.bar=(d,W)=>{const it=(d.items||[]).slice();if(d.sort!==false)it.sort((a,b)=>N(b.value,0)-N(a.value,0));const lw=N(d.label_width,380),bh=44,g=20,H=Math.max(1,it.length*(bh+g)-g),mx=Math.max(...it.map(i=>N(i.value,0)),N(d.max,0))||1,uw=W-lw-180;let b='';
+ it.forEach((e,i)=>{const y=i*(bh+g),w=Math.max(2,N(e.value,0)/mx*uw),h=hl(d,i,e);b+=T(lw-20,y+bh/2,e.label,{a:'end',c:h?P.ts:P.tx,w:h?700:400});b+=`<rect x="${lw}" y="${y}" width="${w}" height="${bh}" rx="6" fill="${h?P.ac:P.mk}"/>`;b+=T(lw+w+14,y+bh/2,F(e.value,d),{c:h?P.act:P.tx,w:h?800:600});});return S(W,H,b);};
+R.column=(d,W)=>{const it=d.items||[],H=N(d.height,440),top=50,bot=60,cw=W/Math.max(1,it.length),bw=Math.min(cw*.62,160),mx=Math.max(...it.map(i=>N(i.value,0)),N(d.max,0))||1,uh=H-top-bot;let b=`<line x1="0" x2="${W}" y1="${H-bot}" y2="${H-bot}" stroke="${P.bs}" stroke-width="2"/>`;
+ it.forEach((e,i)=>{const h=hl(d,i,e),bhh=Math.max(2,N(e.value,0)/mx*uh),x=i*cw+(cw-bw)/2,y=H-bot-bhh;b+=`<rect x="${x}" y="${y}" width="${bw}" height="${bhh}" rx="6" fill="${h?P.ac:P.mk}"/>`;b+=T(x+bw/2,y-22,F(e.value,d),{a:'middle',c:h?P.act:P.tx,w:h?800:600});b+=T(x+bw/2,H-bot+30,e.label,{a:'middle',c:h?P.ts:P.mu,w:h?700:400});});return S(W,H,b);};
+R.line=(d,W)=>{const L=d.labels||[],sr=d.series||[],H=N(d.height,460),ml=N(d.margin_left,100),mr=N(d.margin_right,280),top=40,bot=60,tg=d.target&&d.target.value!=null?d.target:null,all=sr.flatMap(s=>(s.values||[]).map(v=>v==null?null:N(v,null))).filter(v=>v!=null).concat(tg?[N(tg.value,0)]:[]);if(!all.length)return S(W,H,'');let mn=d.min!=null?N(d.min,0):Math.min(...all),mx=d.max!=null?N(d.max,1):Math.max(...all);if(d.zero!==false&&mn>0&&d.min==null)mn=0;
+ const nice=x=>{const e=Math.pow(10,Math.floor(Math.log10(x))),f=x/e;return(f<=1?1:f<=2?2:f<=2.5?2.5:f<=5?5:10)*e;},st=nice((mx-mn)/4||1);if(d.min==null)mn=Math.floor(mn/st)*st;if(d.max==null)mx=Math.ceil(mx/st)*st;
+ const xw=(W-ml-mr)/Math.max(1,L.length-1),xs=i=>ml+i*xw,ys=v=>top+(1-(v-mn)/(mx-mn||1))*(H-top-bot);let b='';
+ for(let v=mn,k=0;v<=mx+st/1e6&&k<20;v+=st,k++){b+=`<line x1="${ml}" x2="${W-mr}" y1="${ys(v)}" y2="${ys(v)}" stroke="${P.bo}" stroke-width="1"/>`;b+=T(ml-14,ys(v),F(v,d),{a:'end',s:22,c:P.fa});}
+ const k=Math.ceil(L.length/12);L.forEach((l,i)=>{if(i%k===0||i===L.length-1)b+=T(xs(i),H-bot+32,l,{a:'middle',s:22,c:P.mu});});
+ const labs=[];
+ if(tg){const y=ys(N(tg.value,0));b+=`<line x1="${ml}" x2="${W-mr}" y1="${y}" y2="${y}" stroke="${P.gd}" stroke-width="3" stroke-dasharray="10 8"/>`;labs.push({y,h:34,f:yy=>T(W-mr+18,yy,(tg.label||TXT.target)+' '+F(tg.value,d),{c:P.gdt,w:700})});}
+ const ord=sr.map((s,i)=>i).sort((a,c)=>(sr[a].highlight?1:0)-(sr[c].highlight?1:0));
+ ord.forEach(si=>{const s=sr[si],vals=(s.values||[]).map(v=>v==null?null:N(v,null)),h=!!s.highlight,col=h?(s.color==='good'?P.gd:P.ac):P.mk;const pts=vals.map((v,i)=>v==null?null:[xs(i),ys(v)]).filter(Boolean);if(!pts.length)return;b+=`<polyline points="${pts.map(p=>p.join(',')).join(' ')}" fill="none" stroke="${col}" stroke-width="${h?6:3}" stroke-linejoin="round" stroke-linecap="round"/>`;const li=vals.length-1-[...vals].reverse().findIndex(v=>v!=null),lv=vals[li];b+=`<circle cx="${xs(li)}" cy="${ys(lv)}" r="${h?9:5}" fill="${col}"/>`;labs.push({y:ys(lv),h:62,f:yy=>T(xs(li)+18,yy-15,s.name,{c:h?P.ts:P.mu,w:h?700:400})+T(xs(li)+18,yy+16,F(lv,d),{c:h?col:P.mu,w:800})});});
+ labs.sort((a,c)=>a.y-c.y);for(let i=1;i<labs.length;i++){const p=labs[i-1],q=labs[i],m=p.y+(p.h+q.h)/2+6;if(q.y<m)q.y=m;}const ov=labs.length?labs[labs.length-1].y+labs[labs.length-1].h/2-(H-bot+10):0;if(ov>0)labs.forEach(l=>l.y-=ov);labs.forEach(l=>b+=l.f(l.y));
+ (d.annotations||[]).slice(0,3).forEach(a=>{const s=sr[N(a.series,0)];if(!s)return;const v=N((s.values||[])[N(a.index,0)],null);if(v==null)return;const x=xs(N(a.index,0)),y=ys(v),up=a.position!=='below',ty=up?y-70:y+70;b+=`<circle cx="${x}" cy="${y}" r="11" fill="none" stroke="${P.ts}" stroke-width="3"/><line x1="${x}" y1="${up?y-14:y+14}" x2="${x}" y2="${up?ty+18:ty-18}" stroke="${P.ts}" stroke-width="2"/>`+T(x,ty,a.text,{a:a.align||'middle',c:P.ts,w:700});});return S(W,H,b);};
+R.bullet=(d,W)=>{const it=d.items||[],lw=N(d.label_width,380),rh=56,g=34,H=Math.max(1,it.length*(rh+g)-g),uw=W-lw-320;let b='';
+ it.forEach((e,i)=>{const y=i*(rh+g),ac=N(e.actual,0),tg=N(e.target,0),fx=(Array.isArray(e.ranges)?e.ranges.map(v=>N(v,0)):[tg*.6,tg*.85,Math.max(tg,ac)*1.15]).slice(0,3),mx=Math.max(...fx,ac,tg)||1,sc=v=>lw+v/mx*uw,ok=e.higher_is_better!==false?ac>=tg:ac<=tg;
+ [...fx].sort((a,c)=>c-a).forEach((f,j)=>{b+=`<rect x="${lw}" y="${y}" width="${Math.max(0,sc(f)-lw)}" height="${rh}" fill="${P.mu}" fill-opacity="${[.10,.18,.28][j]||.1}"/>`;});
+ b+=`<rect x="${lw}" y="${y+rh*.32}" width="${Math.max(0,sc(ac)-lw)}" height="${rh*.36}" fill="${ok?P.gd:P.ac}"/><rect x="${sc(tg)-3}" y="${y+6}" width="6" height="${rh-12}" fill="${P.ts}"/>`;
+ b+=T(lw-20,y+rh/2,e.label,{a:'end',c:P.tx,w:600});b+=T(W-300,y+rh/2-14,F(ac,d),{c:ok?P.gdt:P.act,w:800,s:28});b+=T(W-300,y+rh/2+16,(ok?TXT.reached:TXT.below)+' '+F(tg,d),{s:22,c:P.mu});});return S(W,H,b);};
+R.waterfall=(d,W)=>{const it=d.items||[],H=N(d.height,460),top=50,bot=70,cw=W/Math.max(1,it.length),bw=Math.min(cw*.6,150);let run=0,mn=0,mx=0;const bars=it.map(e=>{const v=N(e.value,0);let a,z;if(e.type==='total'){a=0;z=v;run=v;}else{a=run;z=run+v;run=z;}mn=Math.min(mn,a,z);mx=Math.max(mx,a,z);return{a,z,v,e};});
+ const ys=v=>top+(1-(v-mn)/(mx-mn||1))*(H-top-bot),pg=d.positive_is_good!==false;let b=`<line x1="0" x2="${W}" y1="${ys(0)}" y2="${ys(0)}" stroke="${P.bs}" stroke-width="2"/>`;
+ bars.forEach((o,i)=>{const x=i*cw+(cw-bw)/2,y1=ys(Math.max(o.a,o.z)),y2=ys(Math.min(o.a,o.z)),t=o.e.type==='total',pos=o.v>=0,col=t?(o.e.highlight?P.ac:P.tx):((pos===pg)?P.gd:P.bd);b+=`<rect x="${x}" y="${y1}" width="${bw}" height="${Math.max(2,y2-y1)}" rx="4" fill="${col}"/>`;
+ b+=T(x+bw/2,y1-22,(t?'':pos?'+':'')+F(o.v,d),{a:'middle',c:t?P.ts:col,w:800});b+=T(x+bw/2,H-bot+34,o.e.label,{a:'middle',c:P.mu,s:22});if(i<bars.length-1){const nx=(i+1)*cw+(cw-bw)/2;b+=`<line x1="${x+bw}" x2="${nx}" y1="${ys(o.z)}" y2="${ys(o.z)}" stroke="${P.bs}" stroke-dasharray="6 6" stroke-width="2"/>`;}});return S(W,H,b);};
+R.stack=(d,W)=>{const it=d.items||[],tot=it.reduce((s,e)=>s+N(e.value,0),0)||1,H=N(d.height,200),bh=80;let x=0,b='';
+ it.forEach((e,i)=>{const v=N(e.value,0),w=v/tot*W,h=hl(d,i,e),pc=Math.round(v/tot*100);b+=`<rect x="${x}" y="0" width="${Math.max(1,w-4)}" height="${bh}" fill="${h?P.ac:P.stack[i%5]}"/>`;if(w>90)b+=T(x+12,bh/2,pc+'%',{c:h?P.oa:P.ts,w:800,s:28});b+=T(x+(w>90?12:0),bh+34,e.label,{c:h?P.ts:P.mu,w:h?700:400,s:22});if(w<=90)b+=T(x,bh+64,pc+'%',{c:P.mu,s:22});x+=w;});return S(W,H,b);};
+R.gantt=(d,W)=>{const pm=s=>{const q=String(s||'').split('-').map(Number);return{a:N(q[0],2000),m:N(q[1],1),d:N(q[2],1)};},p0=pm(d.start),idx=s=>{const p=pm(s);return(p.a-p0.a)*12+(p.m-p0.m)+(p.d-1)/30;},nm=Math.max(1,Math.min(36,Math.floor(idx(d.end))+1)),lw=N(d.label_width,380),rh=48,g=18,head=100,bs=(d.bars||[]).slice(0,12),ms=(d.milestones||[]).slice(0,8),H=head+bs.length*(rh+g)+(ms.length?70:10),cw=(W-lw)/nm,xs=s=>lw+idx(s)*cw,gb=H-(ms.length?60:0);
+ const COL={done:P.gd,active:P.ac,planned:P.bs,risk:P.bd},LAB={done:TXT.done,active:TXT.active,planned:TXT.planned,risk:TXT.risk};let b='';
+ for(let i=0;i<nm;i++){const m=(p0.m-1+i)%12,a=p0.a+Math.floor((p0.m-1+i)/12),x=lw+i*cw;b+=`<line x1="${x}" x2="${x}" y1="${head-10}" y2="${gb}" stroke="${P.bo}" stroke-width="1"/>`;b+=T(x+cw/2,head-30,TXT.months[(m+12)%12]+(m===0||i===0?' '+String(a).slice(2):''),{a:'middle',s:22,c:P.mu});}
+if(d.today){const x=xs(d.today);b+=`<line x1="${x}" x2="${x}" y1="${head-10}" y2="${gb}" stroke="${P.ts}" stroke-width="3" stroke-dasharray="4 6"/><path d="M${x-10} 30 L${x+10} 30 L${x} 44 Z" fill="${P.ts}"/>`+T(x,14,TXT.today,{a:'middle',s:22,w:800,c:P.ts});}
+ bs.forEach((f,i)=>{const y=head+i*(rh+g),x1=xs(f.start),x2=xs(f.end)+cw*(String(f.end).split('-').length<3?1:0),st=COL[f.status]?f.status:'planned';b+=T(lw-20,y+rh/2,f.label,{a:'end',c:P.tx,w:600});b+=`<rect x="${x1}" y="${y}" width="${Math.max(8,x2-x1)}" height="${rh}" rx="8" fill="${COL[st]}" ${st==='planned'?`fill-opacity=".55" stroke="${P.mu}" stroke-width="2" stroke-dasharray="6 5"`:''}/>`;const lab=f.text||LAB[st];if(lab){if(x2-x1>150)b+=T(x1+14,y+rh/2,lab,{s:22,w:700,c:st==='planned'?P.ts:P.oa});else if(x2+170<W)b+=T(x2+12,y+rh/2,lab,{s:22,w:700,c:st==='risk'?P.bd:P.mu});else b+=T(x1-12,y+rh/2,lab,{a:'end',s:22,w:700,c:st==='risk'?P.bd:P.mu});}});
+ const by=H-36;ms.forEach(m=>{const x=xs(m.date);b+=`<path d="M${x} ${by-16} L${x+14} ${by} L${x} ${by+16} L${x-14} ${by} Z" fill="${m.critical?P.bd:P.ac}"/>`+T(x+22,by,m.label,{s:22,w:700,c:P.ts});});
+return S(W,H,b);};
+document.querySelectorAll('.chart[data-type]').forEach(el=>{const err=m=>{const p=document.createElement('p');p.style.color='#EC7A5C';p.textContent=m;el.appendChild(p);};try{const js=el.querySelector('script[type="application/json"]');const d=JSON.parse(js?js.textContent:'{}');const W=N(el.dataset.width||d.width,1664);const f=Object.prototype.hasOwnProperty.call(R,el.dataset.type)?R[el.dataset.type]:null;if(!f)return err(TXT.badType+el.dataset.type);el.insertAdjacentHTML('beforeend',f(d,W));}catch(e){err(TXT.badJson+e.message);}});
+/* navigation */
+const S2=[...document.querySelectorAll('#stage>section')],TOT=S2.length,FOOT=document.body.dataset.footer||'';
+S2.forEach((e,i)=>{if(e.classList.contains('cover'))return;const r=document.createElement('div'),l=document.createElement('span'),n=document.createElement('span');r.className='footer';l.textContent=e.classList.contains('section-break')?'':FOOT;n.textContent=`${i+1} ${TXT.of} ${TOT}`;r.append(l,n);e.appendChild(r);});
+const notes=document.getElementById('notes'),stage=document.getElementById('stage');let cur=0;
+const go=k=>{if(!TOT)return;cur=Math.max(0,Math.min(TOT-1,k));S2.forEach((e,i)=>e.classList.toggle('active',i===cur));history.replaceState(null,'','#'+(cur+1));const a=S2[cur].querySelector('aside');notes.textContent=a?a.textContent.trim():TXT.noNotes;};
+const fit=()=>{const k=Math.min(innerWidth/1920,innerHeight/1080);stage.style.transform=`translate(-50%,-50%) scale(${k})`;};
+addEventListener('resize',fit);fit();
+addEventListener('keydown',e=>{if(['ArrowRight','PageDown',' '].includes(e.key))go(cur+1);if(['ArrowLeft','PageUp'].includes(e.key))go(cur-1);if(e.key==='Home')go(0);if(e.key==='End')go(TOT-1);if(e.key==='n')notes.style.display=notes.style.display==='block'?'none':'block';if(e.key==='f'&&doc.requestFullscreen)doc.requestFullscreen();});
+stage.addEventListener('click',e=>go(e.clientX>innerWidth/2?cur+1:cur-1));
+addEventListener('hashchange',()=>go((parseInt(location.hash.slice(1),10)||1)-1));
+go((parseInt(location.hash.slice(1),10)||1)-1);
+})();
+</script>
+</body>
+</html>

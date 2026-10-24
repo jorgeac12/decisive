@@ -1,0 +1,37 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  decision-deck:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install Playwright
+        run: |
+          pip install playwright==1.47.0
+          python -m playwright install --with-deps chromium
+      - name: Template runtime is pinned
+        run: |
+          cp decision-deck/assets/template.html /tmp/t.html
+          python decision-deck/scripts/pin_csp.py /tmp/t.html
+          diff -q /tmp/t.html decision-deck/assets/template.html
+      - name: Chart examples in docs parse
+        run: |
+          python - <<'EOF'
+          import re, json
+          t = open("decision-deck/references/charts.md").read()
+          for b in re.findall(r"```json\n(.*?)```", t, re.S):
+              json.loads(b)
+          EOF
+      - name: Examples and security tests
+        run: python tests/test_decision_deck.py
