@@ -18,7 +18,7 @@ O cliente que fala por dois canais é atendido duas vezes, por pessoas diferente
 
 Evolução do tempo médio de resposta (todas as filas, em horas): jan 11, fev 11,5, mar 12, abr 12,8, mai 13, jun 13,6, jul 14, ago 14,5.
 
-Clientes resolvidos no primeiro contato (todas as filas, em %): jan 78, fev 76, mar 71, abr 66, mai 58, jun 52, jul 46, ago 41.
+Atendimentos repetidos, quando o mesmo cliente volta por outro canal com o mesmo problema (em mil por mês): jan 1,2, fev 1,6, mar 2,1, abr 2,8, mai 3,7, jun 5,0, jul 6,6, ago 8,8. O limite tolerado pela diretoria é de 3 mil por mês.
 
 ## Proposta
 
@@ -38,7 +38,7 @@ A central **garante** que nenhum cliente será atendido duas vezes pelo mesmo pr
 
 ## Meta
 
-Tempo médio de resposta abaixo de 6 horas, 80% dos clientes resolvidos no primeiro contato e satisfação de volta a 8,0 até junho de 2027.
+Tempo médio de resposta abaixo de 6 horas, atendimentos repetidos abaixo de 1 mil por mês e satisfação de volta a 8,0 até junho de 2027.
 
 ## Equipe
 
