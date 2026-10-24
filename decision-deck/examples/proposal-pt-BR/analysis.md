@@ -16,7 +16,7 @@ Unificar os três canais de atendimento numa central única resolve o atendiment
 | Painel único | Tempo de resposta e satisfação definidos uma vez | Sem dono declarado |
 
 ## 3. Decidido
-Central única; histórico compartilhado; roteamento por assunto; painel único; metas até junho de 2027 (resposta abaixo de 6 h, 80% resolvidos no primeiro contato, satisfação 8,0); sequência de migração (WhatsApp e e-mail primeiro, telefone por último).
+Central única; histórico compartilhado; roteamento por assunto; painel único; metas até junho de 2027 (resposta abaixo de 6 h, repetidos abaixo de 1 mil/mês, satisfação 8,0); sequência de migração (WhatsApp e e-mail primeiro, telefone por último).
 
 ## 4. Em aberto, declarado
 Política de gravação e retenção das conversas; treinamento das equipes de telefone para canais escritos.
@@ -55,7 +55,7 @@ Política de gravação e retenção das conversas; treinamento das equipes de t
 Todos vêm dos documentos de entrada (fictícios). Nenhum é estimativa do agente.
 
 ## 11. Leitura dos dados
-- **Resolução no primeiro contato jan a ago:** tendência, gráfico de linha com a meta de 80%. Observação: caiu de 78% para 41% em sete meses, quase pela metade. Escolhido no lugar do tempo de resposta (subiu 32%) porque a queda é visível de longe e liga direto ao cliente atendido duas vezes. Implicação: a meta exige inverter a curva, não ajustá-la. Recomendação: tratar a migração como prioridade de serviço, não de ferramenta.
+- **Atendimentos repetidos jan a ago:** tendência, gráfico de linha com o limite de 3 mil/mês. Observação: cresceram 7 vezes em sete meses, cerca de 35% ao mês, e passaram do limite em maio. Escolhido no lugar do tempo de resposta (subiu 32%) porque a curva acelera, cruza uma linha que a diretoria definiu e liga direto ao cliente atendido duas vezes. Implicação: a meta exige inverter a curva, não ajustá-la. Recomendação: tratar a migração como prioridade de serviço, não de ferramenta.
 - **Volume por canal:** ranking, barras com WhatsApp em destaque (52% do volume).
 - **Custo mensal 442 → 400:** ponte, cascata. A economia vem das ferramentas e da equipe; a equipe menor é a mesma premissa da inconsistência 1.
 - **Cronograma:** Gantt com marco crítico em 15/03/2027.
@@ -63,12 +63,12 @@ Todos vêm dos documentos de entrada (fictícios). Nenhum é estimativa do agent
 ## 12. Grande Ideia e storyboard
 **Grande Ideia:** a central única corrige um atendimento que piora a cada mês, mas o orçamento atual a faz começar com equipe menor e sem tempo de transição; quatro decisões resolvem isso antes do início.
 
-**SCQA:** três canais separados (S); a resolução no primeiro contato caiu de 78% para 41% e a satisfação caiu (C); como unificar sem piorar o serviço durante a migração? (Q); unificar, com quatro decisões tomadas antes de começar (R).
+**SCQA:** três canais separados (S); os atendimentos repetidos cresceram 7 vezes e a satisfação caiu (C); como unificar sem piorar o serviço durante a migração? (Q); unificar, com quatro decisões tomadas antes de começar (R).
 
 **Storyboard:**
 1. capa
 2. Unificar o atendimento resolve a piora, se quatro decisões vierem antes (cards + banner)
-3. Resolver no primeiro contato caiu de 78% para 41% em sete meses, e a meta é 80% (line)
+3. Os atendimentos repetidos cresceram 7 vezes desde janeiro e passaram do limite em maio (line)
 4. O WhatsApp já é metade do volume e o canal mais barato (bar)
 5. A central troca três filas por uma, com histórico e roteamento (flow)
 6. O custo mensal cai de R$ 442 mil para R$ 400 mil, e quase toda a economia líquida vem da equipe menor (waterfall)
