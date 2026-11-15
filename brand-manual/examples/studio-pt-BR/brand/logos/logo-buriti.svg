@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 140" role="img" aria-label="Estúdio Buriti (marca fictícia)">
+  <g fill="none" stroke="#C4673A" stroke-width="8" stroke-linecap="round">
+    <path d="M70 118V58"/>
+    <path d="M70 58C52 44 34 44 20 54"/>
+    <path d="M70 58C88 44 106 44 120 54"/>
+    <path d="M70 58C60 36 44 24 28 22"/>
+    <path d="M70 58C80 36 96 24 112 22"/>
+    <path d="M70 58V18"/>
+  </g>
+  <text x="150" y="78" font-family="Georgia, 'Times New Roman', serif" font-size="56" font-weight="700" fill="#1F3D36">Buriti</text>
+  <text x="152" y="112" font-family="Arial, Helvetica, sans-serif" font-size="20" letter-spacing="6" fill="#1F3D36">ESTÚDIO DE ARQUITETURA</text>
+</svg>

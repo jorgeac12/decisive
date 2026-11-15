@@ -9,6 +9,7 @@
 | Skill | O que faz | Idiomas |
 |---|---|---|
 | [decision-deck](decision-deck/README.pt-BR.md) | Lê documentos com olho crítico e monta um deck executivo em HTML que termina em decisões: análise do que está decidido, em aberto e não endereçado; títulos de ação e SCQA; gráficos, Gantt, roadmap e ficha de projeto a partir de JSON; saída protegida por CSP. | Instruções em inglês; decks em qualquer idioma (rótulos em en e pt-BR) |
+| [brand-manual](brand-manual/README.pt-BR.md) | Leva o dono de um negócio do material solto da marca (logotipo, prints do Instagram, PDFs) a um kit de marca validado: cores medidas nos arquivos, duas direções para escolher, tokens, livro da marca, manual em HTML, acervo de fotos indexado para busca barata por texto e uma skill pessoal da marca. | Instruções em inglês; kits em qualquer idioma (rótulos do manual em en e pt-BR) |
 
 ![Exemplo da Decision Deck](docs/img/proposal-pt-BR-02.png)
 
@@ -32,4 +33,4 @@ Veja [CONTRIBUTING.md](CONTRIBUTING.md). Relatos de segurança: [SECURITY.md](SE
 
 ## Licença
 
-[Apache 2.0](LICENSE). Mantenha o arquivo [NOTICE](NOTICE) ao redistribuir. Os nomes "Decisive" e "Decision Deck" não são licenciados para promover produtos derivados. As fontes usadas nos templates (Inter, JetBrains Mono) são SIL Open Font License e carregadas do Google Fonts, não distribuídas aqui.
+[Apache 2.0](LICENSE). Mantenha o arquivo [NOTICE](NOTICE) ao redistribuir. Os nomes "Decisive", "Decision Deck" e "Brand Manual" não são licenciados para promover produtos derivados. As fontes usadas nos templates (Inter, JetBrains Mono) são SIL Open Font License e carregadas do Google Fonts, não distribuídas aqui.

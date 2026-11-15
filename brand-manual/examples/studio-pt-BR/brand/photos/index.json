@@ -1,0 +1,194 @@
+{
+ "version": 1,
+ "photos": [
+  {
+   "id": "f001",
+   "file": "f001_storefront_nobody_vertical_text-top.jpg",
+   "type": "storefront",
+   "people": [],
+   "orientation": "vertical",
+   "width": 1200,
+   "height": 1500,
+   "text_space": "good",
+   "text_side": "top",
+   "background": "clean",
+   "light": "bright",
+   "dominant_color": "#BFD2D6",
+   "brand_fit": "yes",
+   "use": [
+    "cover",
+    "authority"
+   ],
+   "quality": "good",
+   "issues": [],
+   "sensitive": [],
+   "desc": "Ilustração sintética: fachada do estúdio com faixa verde da marca, céu limpo acima.",
+   "sha256": "dc5a50d2a98afe85267571f70ac8bc2ef87a13965e823510a9769425b486abbb"
+  },
+  {
+   "id": "f002",
+   "file": "f002_product_nobody_square_bg-clean.jpg",
+   "type": "product",
+   "people": [],
+   "orientation": "square",
+   "width": 1200,
+   "height": 1200,
+   "text_space": "some",
+   "text_side": "top",
+   "background": "clean",
+   "light": "bright",
+   "dominant_color": "#F0ECE3",
+   "brand_fit": "yes",
+   "use": [
+    "product",
+    "carousel",
+    "proof"
+   ],
+   "quality": "good",
+   "issues": [],
+   "sensitive": [],
+   "desc": "Ilustração sintética: maquete branca de casa sobre base clara, fundo neutro.",
+   "sha256": "0fdc349e5ccfe2efbf8a1dd289aaaa1d05d43b34a40a93b54e9c238ce7f75f15"
+  },
+  {
+   "id": "f003",
+   "file": "f003_at-work_marina-socia_horizontal_bg-ambient.jpg",
+   "type": "at-work",
+   "people": [
+    "Marina (sócia)"
+   ],
+   "orientation": "horizontal",
+   "width": 1600,
+   "height": 1000,
+   "text_space": "some",
+   "text_side": "left",
+   "background": "ambient",
+   "light": "bright",
+   "dominant_color": "#CFC6B5",
+   "brand_fit": "neutral",
+   "use": [
+    "backstage",
+    "carousel"
+   ],
+   "quality": "good",
+   "issues": [],
+   "sensitive": [],
+   "desc": "Ilustração sintética: Marina à mesa de projeto com três pranchas de desenho.",
+   "sha256": "fdfaec0de38c5a13a4f807116ecc80657105eaeee464dc2b1a3f28b3df9d32ce"
+  },
+  {
+   "id": "f004",
+   "file": "f004_half-body_marina-socia_horizontal_text-right.jpg",
+   "type": "half-body",
+   "people": [
+    "Marina (sócia)"
+   ],
+   "orientation": "horizontal",
+   "width": 1600,
+   "height": 1000,
+   "text_space": "good",
+   "text_side": "right",
+   "background": "clean",
+   "light": "bright",
+   "dominant_color": "#D9D1C4",
+   "brand_fit": "yes",
+   "use": [
+    "slide-background",
+    "authority",
+    "cover"
+   ],
+   "quality": "good",
+   "issues": [],
+   "sensitive": [],
+   "desc": "Ilustração sintética: Marina à esquerda, parede clara livre à direita para título.",
+   "sha256": "2a5f5ca45e3eb066869fd24d6c704bd4d0baa308d5cc38f7b94dded48bb699ce",
+   "group": "retratos-marina",
+   "best_of_group": false
+  },
+  {
+   "id": "f005",
+   "file": "f005_portrait_marina-socia_vertical_text-top.jpg",
+   "type": "portrait",
+   "people": [
+    "Marina (sócia)"
+   ],
+   "orientation": "vertical",
+   "width": 1200,
+   "height": 1500,
+   "text_space": "good",
+   "text_side": "top",
+   "background": "clean",
+   "light": "bright",
+   "dominant_color": "#E9E1D4",
+   "brand_fit": "yes",
+   "use": [
+    "bio",
+    "cover",
+    "video-cover"
+   ],
+   "quality": "good",
+   "issues": [],
+   "sensitive": [],
+   "desc": "Ilustração sintética: retrato vertical de Marina em parede areia, espaço livre no topo.",
+   "sha256": "734b49a12e5414b23ca7ca572b4eb1842b680a8562d582f4ba616d3f1c25f32f",
+   "group": "retratos-marina",
+   "best_of_group": true
+  },
+  {
+   "id": "f006",
+   "file": "f006_space_nobody_horizontal_text-left.jpg",
+   "type": "space",
+   "people": [],
+   "orientation": "horizontal",
+   "width": 1600,
+   "height": 1000,
+   "text_space": "good",
+   "text_side": "left",
+   "background": "ambient",
+   "light": "bright",
+   "dominant_color": "#EDE7DB",
+   "brand_fit": "yes",
+   "use": [
+    "slide-background",
+    "carousel"
+   ],
+   "quality": "good",
+   "issues": [],
+   "sensitive": [],
+   "desc": "Ilustração sintética: sala de reunião com janela ampla e sofá na cor argila.",
+   "sha256": "b17b2b8208478c95c4984be2a2059a47815e8278fa5b4658046c1853ddc5c5c9"
+  },
+  {
+   "id": "f007",
+   "file": "f007_group_marina-socia_horizontal_bg-busy.jpg",
+   "type": "group",
+   "people": [
+    "Marina (sócia)",
+    "cliente"
+   ],
+   "orientation": "horizontal",
+   "width": 1600,
+   "height": 1000,
+   "text_space": "none",
+   "text_side": "none",
+   "background": "busy",
+   "light": "dark",
+   "dominant_color": "#3A3E3D",
+   "brand_fit": "clash",
+   "use": [
+    "backstage",
+    "proof"
+   ],
+   "quality": "ok",
+   "issues": [
+    "backlit"
+   ],
+   "sensitive": [
+    "client-or-patient"
+   ],
+   "desc": "Ilustração sintética: visita à obra com cliente, ambiente escuro e carregado.",
+   "sha256": "73bdf50e2756bac1f82f65d3228716813de68f329b3b43e0fc2604c1a7361a0b",
+   "consent": true
+  }
+ ]
+}

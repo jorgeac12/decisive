@@ -9,6 +9,7 @@
 | Skill | What it does | Languages |
 |---|---|---|
 | [decision-deck](decision-deck/) | Reads documents critically and builds an executive HTML deck that ends in decisions: analysis of what is decided, open and not addressed; action titles and SCQA; charts, Gantt, roadmap and project brief from JSON; CSP-hardened output. | Instructions in English; decks in any language (labels in en and pt-BR) |
+| [brand-manual](brand-manual/) | Takes a business owner from loose brand material (logo, Instagram screenshots, PDFs) to a validated brand kit: colors measured from the files, two directions to choose from, tokens, brand book, HTML manual, a photo library indexed for cheap text search and a personal brand skill. | Instructions in English; kits in any language (manual labels in en and pt-BR) |
 
 ![Decision Deck example](docs/img/proposal-pt-BR-02.png)
 
@@ -32,4 +33,4 @@ See [CONTRIBUTING.md](CONTRIBUTING.md). Security reports: [SECURITY.md](SECURITY
 
 ## License
 
-[Apache 2.0](LICENSE). Keep the [NOTICE](NOTICE) file when you redistribute. The names "Decisive" and "Decision Deck" are not licensed for endorsing derived products. Fonts used by the templates (Inter, JetBrains Mono) are under the SIL Open Font License and are loaded from Google Fonts, not distributed here.
+[Apache 2.0](LICENSE). Keep the [NOTICE](NOTICE) file when you redistribute. The names "Decisive", "Decision Deck" and "Brand Manual" are not licensed for endorsing derived products. Fonts used by the templates (Inter, JetBrains Mono) are under the SIL Open Font License and are loaded from Google Fonts, not distributed here.

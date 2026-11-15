@@ -44,6 +44,23 @@ Add the CSS using theme tokens only (no hard-coded colors), document it in `refe
 
 Copy a `[data-theme]` block, change only values, check contrast (4.5:1 for body text) and add the name to `THEMES` in `assemble.py`.
 
+## brand-manual
+
+```
+brand-manual/
+├── SKILL.md            the journey; keep it under ~150 lines
+├── references/         one file per phase, loaded on demand
+├── assets/manual.css   the only stylesheet of the generated manual
+├── scripts/            palette.py, photo_index.py, validate.py, build_manual.py
+└── examples/<name>/    input/ (synthetic), dissection.md, brand/ (the kit)
+```
+
+- **Changing the kit format.** Update `validate.py` first, then `references/kit-format.md` (its JSON example is validated in the tests) and the example kit.
+- **Changing the photo vocabulary.** Edit `VOCAB` or `VOCAB_LIST` in `validate.py`, the table in `references/photos.md` and the filters in `photo_index.py find`.
+- **Changing the manual page.** Edit `assets/manual.css` or `build_manual.py`, rebuild the example (`python brand-manual/scripts/build_manual.py brand-manual/examples/studio-pt-BR/brand`) and run `python tests/test_brand_manual.py`. The page must stay free of scripts and inline `style` attributes: the CSP pins one stylesheet by hash.
+- Every value that reaches the stylesheet or a URL needs a character check in `validate.py`; every other value goes through `html.escape`. Add an adversarial case to the tests for any new field.
+- Example photos are synthetic drawings (`examples/studio-pt-BR/input/make_inputs.py`). Never commit photos of real people or places.
+
 ## Adding a new skill to the catalog
 
 Create a folder with `SKILL.md` (`name` in lowercase-with-hyphens, `description` under 1024 characters), a README in English and Portuguese, at least one fictional example, and add a row to both catalog READMEs.
