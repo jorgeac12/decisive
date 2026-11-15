@@ -55,6 +55,7 @@ Um verde só. Os verdes `#2B5A4E` e `#3E6B4F` que apareciam no feed saem de uso.
 
 ## Estado da jornada
 
+- 2026-11-10: idioma confirmado: português (Brasil) para as perguntas e para os artefatos.
 - 2026-11-10: diagnóstico, coleta e dissecação concluídos.
 - 2026-11-10: direção escolhida: evoluída.
 - 2026-11-11: 7 fotos indexadas (1 retrato, 1 meio-corpo, 1 trabalhando, 1 fachada, 1 ambiente, 1 produto, 1 grupo).

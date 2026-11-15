@@ -76,6 +76,23 @@ def main():
     code, out = run("build_manual.py", EX / "brand", "--check")
     check(code == 0, "manual.html is up to date (re-run build_manual.py)")
 
+    print("explainer page and question 0")
+    import base64, hashlib
+    from validate import scan_markup
+    doc_page = (ROOT / "docs/brand-manual.html").read_text(encoding="utf-8")
+    style = re.search(r"<style>(.*?)</style>", doc_page, re.S).group(1)
+    pin = "sha256-" + base64.b64encode(hashlib.sha256(style.encode("utf-8")).digest()).decode()
+    check(f"style-src '{pin}'" in doc_page, f"explainer stylesheet matches its CSP pin (expected {pin})")
+    errs = []
+    scan_markup(re.sub(r'<a href="https://github\.com/jorgeac12/decisive/[^"]*">', "<a>", doc_page), "docs/brand-manual.html", errs)
+    check(not errs, "explainer has no script, handler or external resource" + (f"\n{errs}" if errs else ""))
+    check('lang="en"' in doc_page and 'lang="pt-BR"' in doc_page and doc_page.count('class="zero"') == 2
+          and doc_page.count('<li') == 16, "explainer has both languages with the same eight steps")
+    check(all((ROOT / "docs" / m).is_file() for m in re.findall(r'src="([^"]+)"', doc_page)), "explainer images exist")
+    skill = (SKILL / "SKILL.md").read_text(encoding="utf-8")
+    check("Question 0: language" in skill and skill.index("Question 0: language") < skill.index("### 1. Assessment")
+          and len(skill.splitlines()) <= 150, "SKILL.md asks the language before the assessment and stays under 150 lines")
+
     print("measuring")
     check(svg_colors(EX / "input/logo-buriti.svg") == ["#C4673A", "#1F3D36"], "SVG colors are read exactly")
     feed = [h for h, _ in image_colors(EX / "input/feed-instagram.png", 8)]

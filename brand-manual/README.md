@@ -12,8 +12,11 @@ Most small businesses have a logo file, an Instagram grid and a few PDFs, and ev
 
 *From the [Portuguese example](examples/studio-pt-BR/): a fictional architecture studio with a planted inconsistency (three greens in nine posts), the agent's reading and the final kit. Photos are synthetic drawings.*
 
+A one-page explanation for people who are not developers, in English and Portuguese: [docs/brand-manual.html](../docs/brand-manual.html).
+
 ## What it does
 
+0. **Language first.** One question confirms the language of the conversation and of the artifacts.
 1. **Short assessment.** Three questions: what you sell and to whom, where the brand shows up most, how you want to be perceived.
 2. **Intake.** Logo, Instagram screenshots, real documents and references, each tagged "mine" or "admired".
 3. **Reading with evidence.** Exact colors from the logo file, measured colors from screenshots, fonts as fact or hypothesis, and inconsistencies stated as business risk.

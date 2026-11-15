@@ -12,8 +12,11 @@ A maioria dos pequenos negócios tem um arquivo de logotipo, uma grade de Instag
 
 *Do [exemplo em português](examples/studio-pt-BR/): um estúdio de arquitetura fictício com uma inconsistência plantada (três verdes em nove posts), a leitura do agente e o kit final. As fotos são desenhos sintéticos.*
 
+Uma página de explicação para quem não é desenvolvedor, em inglês e português: [docs/brand-manual.html](../docs/brand-manual.html).
+
 ## O que ela faz
 
+0. **Idioma primeiro.** Uma pergunta confirma o idioma da conversa e dos artefatos.
 1. **Diagnóstico rápido.** Três perguntas: o que você vende e para quem, onde a marca mais aparece, como quer ser percebido.
 2. **Coleta.** Logotipo, prints do Instagram, documentos reais e referências, cada item marcado como "sou eu" ou "admiro".
 3. **Leitura com evidência.** Cores exatas do arquivo do logo, cores medidas nos prints, fontes como dado ou hipótese, e inconsistências ditas como risco de negócio.

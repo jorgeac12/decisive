@@ -3,7 +3,7 @@ name: brand-manual
 description: Guides a business owner from loose brand material (logo, Instagram screenshots, PDFs, decks, reference images) to a brand manual and design system that agents can use. Runs in separate phases: a short assessment, material intake, an evidence-based reading with measured colors, two visual directions to choose from, a validated brand kit (tokens, brand book, HTML manual), a photo library indexed with a closed vocabulary for cheap search, and a personal brand skill. Use when asked for a brand manual, brand guidelines, visual identity, brand kit, design system for a small business, or to organize photos for posts, carousels, reels and decks.
 license: Apache-2.0
 metadata:
-  version: "1.0.0"
+  version: "1.1.0"
 ---
 
 # Brand Manual
@@ -25,7 +25,7 @@ The value is not decoration. It is evidence (colors are measured, fonts are read
 
 | File | Read when |
 |---|---|
-| `references/intake.md` | Phases 1 and 2 |
+| `references/intake.md` | Question 0, phases 1 and 2 |
 | `references/dissection.md` | Phase 3 |
 | `references/proposal.md` | Phase 4 |
 | `references/kit-format.md` | Phase 5, before writing `tokens.json` and `brand.md` |
@@ -43,7 +43,8 @@ The value is not decoration. It is evidence (colors are measured, fonts are read
 - **No invented facts.** A color is measured, read from a file, or proposed and approved; record which in `meta.origins`. A font identified from an image is a hypothesis: say so.
 - **Never redraw a logo.** It enters as the file the owner sent. No tracing, no "improving", no approximating.
 - **Do not identify people by their face.** The owner tells you who is in each photo.
-- **Owner language.** Speak like a business owner: "main color", not "primary token". Never mention files, tokens or JSON unless asked. Write in the language of the owner's request.
+- **Owner words.** Speak like a business owner: "main color", not "primary token". Never mention files, tokens or JSON unless asked.
+- **Language.** Questions and artifacts use the language confirmed in question 0. Do not switch midway unless the owner asks.
 - **Questions.** At most three per round. If a multiple-choice question tool is available, use it and state the cost of each option.
 - **Writing.** Short affirmative sentences. No em dashes.
 
@@ -52,6 +53,8 @@ The value is not decoration. It is evidence (colors are measured, fonts are read
 ### 0. Before asking anything
 
 Silently: look for an existing kit (a `brand/` folder with `tokens.json`) and read "Journey state" to resume; look for context already available (memory, project documents, a business brief) so you confirm instead of asking again; check whether you can run Python. Without Python, follow the manual path at the end.
+
+**Question 0: language.** Then, before any other question, confirm the language. Ask it in the language of the owner's request, as a single question: "In which language should I ask the questions and write your brand manual?" Offer the language of the request first, then English and Portuguese, and let them name another. If they want the conversation in one language and the artifacts in another, accept both. Record the artifact language in `meta.lang` and both in "Journey state". When resuming a kit that already has `meta.lang`, do not ask again: confirm it in one line. Details in `references/intake.md`.
 
 ### 1. Assessment (three questions)
 
@@ -115,5 +118,6 @@ Write the same files by hand following `references/kit-format.md` and `reference
 - The logo is the original file, or the manual says "provisional".
 - `validate.py` reports 0 errors and `build_manual.py --check` says the manual is up to date.
 - Every photo has an id, a standard name and a complete index entry; sensitive photos carry recorded consent.
+- The language confirmed in question 0 is in `meta.lang`, and every artifact is written in it.
 - "Journey state" is current.
 - The brand skill exists and the proof piece was delivered.

@@ -70,7 +70,7 @@ The brand book, in the owner's language, at least four `##` sections. Recommende
 | Logo | The file, right and wrong backgrounds, clear space, minimum size. If provisional, say so |
 | Photography | The look, what to avoid, consent rules, pointer to `photos/index.json` |
 | Surfaces | Size and rules for the two or three pieces they make most (from question 2) |
-| Journey state | Dated list: phases done, direction chosen, photos indexed, what is pending |
+| Journey state | Dated list: language confirmed in question 0 (conversation and artifacts), phases done, direction chosen, photos indexed, what is pending |
 
 Supported in the manual: headings, paragraphs, lists, tables, `**bold**` and `` `code` ``. Links render as plain text. No em dashes.
 

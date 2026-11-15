@@ -1,7 +1,8 @@
 # Briefing (empresa fictícia)
 
-Respostas da dona do Estúdio Buriti às três perguntas da fase 1. Tudo aqui é inventado para o exemplo.
+Respostas da dona do Estúdio Buriti à pergunta 0 e às três perguntas da fase 1. Tudo aqui é inventado para o exemplo.
 
+0. **Idioma.** Português (Brasil), para as perguntas e para os artefatos.
 1. **O que vende e para quem.** Projetos de reforma de casas para famílias de Campinas que querem morar melhor sem sair do bairro.
 2. **Onde a marca mais aparece.** Instagram e propostas em PDF.
 3. **Como quer ser percebida.** Sóbria, próxima, contemporânea. Não quer parecer fria.

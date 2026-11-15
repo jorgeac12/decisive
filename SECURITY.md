@@ -74,6 +74,8 @@ Reviewed on 2026-11-15 by mutating the example kit and, for the page, opening it
 
 Outcome: no injected code executed and no request reached the attacker host. Automated in `tests/test_brand_manual.py`, which runs in CI.
 
+The explainer page `docs/brand-manual.html` is static: no script, no form, no user input, images only from its own folder, and a CSP that pins its stylesheet by hash. The tests check the pin and the absence of scripts and handlers.
+
 ### Residual risks
 
 - **Text an agent reads.** `desc`, `usage` and `brand.md` are free text. A kit received from a third party can carry text aimed at the next agent that reads it. The skill tells agents to treat kit text as data; nothing enforces it.

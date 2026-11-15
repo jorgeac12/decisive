@@ -1,4 +1,26 @@
-# Assessment and intake (phases 1 and 2)
+# Language, assessment and intake (question 0, phases 1 and 2)
+
+## Question 0: language
+
+Asked once, before anything else, in the language of the owner's request.
+
+> In which language should I ask the questions and write your brand manual?
+
+| Option | When to offer |
+|---|---|
+| The language of the request | Always, first |
+| English, Portuguese | Always, when they are not the first option |
+| Another language | Always; the owner names it |
+
+What the answer sets:
+
+- **Conversation language**: every question, summary and proposal from here on.
+- **Artifact language**: `brand.md`, color and style names, usage notes, photo descriptions, the brand skill and the proof piece. Recorded as `meta.lang` (a tag such as `en`, `pt-BR`, `es`).
+- One answer sets both. If the owner asks for a split ("talk to me in Portuguese, write the manual in English"), keep the two apart and record both in "Journey state".
+- The manual page has interface labels in English and Portuguese. For any other language the content is in that language and the labels stay in English: say so once.
+- The photo vocabulary (`portrait`, `text_space`...) and the file names stay in English in every language. They are search keys, not text for the owner.
+
+Do not infer the language from a logo, a document or the owner's location. Resuming a kit that has `meta.lang`: confirm in one line ("I will continue in Portuguese") instead of asking again. If the owner changes language later, switch the conversation at once and ask whether the artifacts already written should be translated.
 
 ## Phase 1: three questions
 
