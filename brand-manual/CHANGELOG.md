@@ -3,7 +3,7 @@
 ## 1.1.0 (2026-11-15)
 
 - Question 0: the language of the questions and of the artifacts is confirmed before anything else and recorded in `meta.lang` and in "Journey state".
-- Explainer page in English and Portuguese: `docs/brand-manual.html`.
+- Explainer page in English and Portuguese: `docs/brand-manual.html`, with `docs/index.html` and `docs/.nojekyll` so GitHub Pages can serve `docs/`.
 
 ## 1.0.0 (2026-11-15)
 

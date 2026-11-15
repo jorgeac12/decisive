@@ -59,6 +59,7 @@ brand-manual/
 - **Changing the photo vocabulary.** Edit `VOCAB` or `VOCAB_LIST` in `validate.py`, the table in `references/photos.md` and the filters in `photo_index.py find`.
 - **Changing the manual page.** Edit `assets/manual.css` or `build_manual.py`, rebuild the example (`python brand-manual/scripts/build_manual.py brand-manual/examples/studio-pt-BR/brand`) and run `python tests/test_brand_manual.py`. The page must stay free of scripts and inline `style` attributes: the CSP pins one stylesheet by hash.
 - Every value that reaches the stylesheet or a URL needs a character check in `validate.py`; every other value goes through `html.escape`. Add an adversarial case to the tests for any new field.
+- **Site.** `docs/` is ready to be served by GitHub Pages (Settings, Pages, deploy from branch `main`, folder `/docs`). `docs/index.html` lists the skills; `docs/.nojekyll` makes Pages serve the files as they are.
 - **Explainer page.** `docs/brand-manual.html` is one static file in English and Portuguese, with a CSS-only language switch and no script. Keep both languages in step. If you change its `<style>`, update the `sha256-` value in its Content-Security-Policy; `python tests/test_brand_manual.py` prints the expected value when they differ.
 - Example photos are synthetic drawings (`examples/studio-pt-BR/input/make_inputs.py`). Never commit photos of real people or places.
 

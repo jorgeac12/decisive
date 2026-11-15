@@ -79,13 +79,16 @@ def main():
     print("explainer page and question 0")
     import base64, hashlib
     from validate import scan_markup
+    for page_name in ("brand-manual.html", "index.html"):
+        doc_page = (ROOT / "docs" / page_name).read_text(encoding="utf-8")
+        style = re.search(r"<style>(.*?)</style>", doc_page, re.S).group(1)
+        pin = "sha256-" + base64.b64encode(hashlib.sha256(style.encode("utf-8")).digest()).decode()
+        check(f"style-src '{pin}'" in doc_page, f"{page_name}: stylesheet matches its CSP pin (expected {pin})")
+        errs = []
+        scan_markup(re.sub(r'<a href="https://github\.com/jorgeac12/decisive[^"]*">', "<a>", doc_page), page_name, errs)
+        check(not errs, f"{page_name}: no script, handler or external resource" + (f"\n{errs}" if errs else ""))
+        check(all((ROOT / "docs" / m).is_file() for m in re.findall(r'href="([^":]+\.html)"', doc_page)), f"{page_name}: local links exist")
     doc_page = (ROOT / "docs/brand-manual.html").read_text(encoding="utf-8")
-    style = re.search(r"<style>(.*?)</style>", doc_page, re.S).group(1)
-    pin = "sha256-" + base64.b64encode(hashlib.sha256(style.encode("utf-8")).digest()).decode()
-    check(f"style-src '{pin}'" in doc_page, f"explainer stylesheet matches its CSP pin (expected {pin})")
-    errs = []
-    scan_markup(re.sub(r'<a href="https://github\.com/jorgeac12/decisive/[^"]*">', "<a>", doc_page), "docs/brand-manual.html", errs)
-    check(not errs, "explainer has no script, handler or external resource" + (f"\n{errs}" if errs else ""))
     check('lang="en"' in doc_page and 'lang="pt-BR"' in doc_page and doc_page.count('class="zero"') == 2
           and doc_page.count('<li') == 16, "explainer has both languages with the same eight steps")
     check(all((ROOT / "docs" / m).is_file() for m in re.findall(r'src="([^"]+)"', doc_page)), "explainer images exist")

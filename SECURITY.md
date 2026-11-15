@@ -74,7 +74,7 @@ Reviewed on 2026-11-15 by mutating the example kit and, for the page, opening it
 
 Outcome: no injected code executed and no request reached the attacker host. Automated in `tests/test_brand_manual.py`, which runs in CI.
 
-The explainer page `docs/brand-manual.html` is static: no script, no form, no user input, images only from its own folder, and a CSP that pins its stylesheet by hash. The tests check the pin and the absence of scripts and handlers.
+The pages under `docs/` (`index.html` and the explainer `brand-manual.html`) are static: no script, no form, no user input, images only from its own folder, and a CSP that pins its stylesheet by hash. The tests check the pin and the absence of scripts and handlers.
 
 ### Residual risks
 
