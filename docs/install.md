@@ -37,9 +37,12 @@ Run `/reload` in an open session. Force the skill with `/skill:decision-deck <yo
 
 Any agent that supports `SKILL.md` folders: copy the folder to its skills directory. Agents without skill support: paste `SKILL.md` as instructions and give the agent access to the `references/`, `assets/` and `scripts/` files.
 
+The same steps work for every skill folder: replace `decision-deck` with `brand-manual`.
+
 ## Requirements
 
 - Python 3.9+ for `assemble.py` and `validate.py` (standard library only).
+- brand-manual: `pip install pillow` to measure colors in images and prepare photos; validation, the manual page and photo search use the standard library only.
 - Optional: `pip install playwright && playwright install chromium` for `validate.py --render`.
 - A browser to present. Internet access only for the Google Fonts (decks fall back to Arial offline).
 
